@@ -16,7 +16,7 @@ name: 🏷️ Add labels
 
 jobs:
   label:
-    uses: annminn104/gh-actions/.github/workflows/apply-labels.yml@v3.2.0
+    uses: annminn104/gh-actions/.github/workflows/apply-labels.yml@master
     with:
       os: ubuntu-latest
     secrets:
