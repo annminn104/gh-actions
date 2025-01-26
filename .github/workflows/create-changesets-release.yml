@@ -51,8 +51,13 @@ jobs:
           enable-corepack: false
           cache-node-modules: true
 
-      - name: Setup npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+          //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🦋 Create release pull request or publish to npm
         id: changesets
