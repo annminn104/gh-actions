@@ -44,10 +44,8 @@ Check each action's README file for detailed instructions on how to use it.
 |------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | [`composer/get-cache-directory`](./actions/composer/get-cache-directory/README.md) | Gets the Composer cache directory path and exports it as env variable.                             |
 | [`composer/get-root-version`](./actions/composer/get-root-version/README.md)       | determines the Composer root version based on the specified branch and exports it as env variable. |
-| [`composer/install`](./actions/composer/install/README.md)                         | Installs dependencies with Composer based on the specified dependency level.                       |
 | [`playwright/install`](./actions/playwright/install/README.md)                     | Installs [Playwright](https://playwright.dev/) along with its dependencies.                        |
 | [`pnpm/install`](./actions/pnpm/install/README.md)                                 | Installs mono-repository dependencies using [PNPM](https://pnpm.io/).                              |
-| [`s3/cache`](./actions/s3/cache/README.md)                                         | Cache artifacts, or restore them using S3.                                                         |
 
 <br>
 
