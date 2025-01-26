@@ -1,5 +1,9 @@
 ---
 
+permissions:
+  id-token: write
+  contents: write
+
 name: Create release or publish to pnpm reusable workflow
 on:  # yamllint disable-line rule:truthy
   workflow_call:
@@ -52,7 +56,7 @@ jobs:
         uses: changesets/action@v1
         with:
           commit: 'chore: update versions'
-          title: 'chore: update versions'
+          title: 'chore: updaet versions'
           cwd: ${{ github.workspace }}
           publish: pnpm run cs:publish
           version: pnpm run cs:version
