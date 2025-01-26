@@ -1,0 +1,46 @@
+---
+
+on:  # yamllint disable-line rule:truthy
+  workflow_call:
+    inputs:
+      os:
+        description: The operating system to run the workflow on
+        required: false
+        type: string
+        default: ubuntu-latest
+      severity:
+        description: Severity level for shell-check
+        required: false
+        type: string
+        default: warning
+    secrets:
+      token:
+        description: Github token used to run this workflow
+        required: true
+
+name: 🐞 Differential shell-check
+
+jobs:
+  shellcheck:
+    runs-on: ${{ inputs.os }}
+    steps:
+      - name: 📦 Check out the codebase
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: 🐞 Differential shell-check
+        id: shellcheck
+        uses: redhat-plumbers-in-action/differential-shellcheck@v5
+        with:
+          severity: ${{ inputs.severity }}
+          token: ${{ secrets.token }}
+
+      - if: ${{ always() }}
+        name: 📤 Upload artifact with shell-check defects in SARIF format
+        uses: actions/upload-artifact@v4
+        with:
+          name: Differential shell-check SARIF
+          path: ${{ steps.shellcheck.outputs.sarif }}
+
+...
