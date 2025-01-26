@@ -21,18 +21,18 @@ jobs:
       )
     steps:
       - name: 🙋‍♂️ Request reviewer from @way-finder-bot
-        uses: annminn104/gh-actions/actions/github/pull-request/request-review@v0.0.1
+        uses: annminn104/gh-actions/actions/github/pull-request/request-review@v0.0.2
         with:
           reviewer: 'way-finder-bot'
           github-token: "${{ secrets.WAY_FINDER_BOT_TOKEN }}"
 
       - name: 🙋‍♂️ Assign @way-finder-bot
-        uses: annminn104/gh-actions/actions/github/pull-request/add-assignee@v0.0.1
+        uses: annminn104/gh-actions/actions/github/pull-request/add-assignee@v0.0.2
         with:
           assignee: 'way-finder-bot'
           github-token: "${{ secrets.WAY_FINDER_BOT_TOKEN }}"
 
       - name: ✅ Approve pull request
-        uses: annminn104/gh-actions/actions/github/pull-request/approve@v0.0.1
+        uses: annminn104/gh-actions/actions/github/pull-request/approve@v0.0.2
         with:
           github-token: "${{ secrets.WAY_FINDER_BOT_TOKEN }}"
