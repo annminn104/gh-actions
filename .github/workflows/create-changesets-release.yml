@@ -57,6 +57,9 @@ jobs:
           publish: pnpm run cs:publish
           version: pnpm run cs:version
           setupGitUser: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
+          NPM_TOKEN: ${{ secrets.npm_token }}
 
       - name: Push changes to changeset-release branch
         run: |
