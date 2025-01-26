@@ -32,6 +32,7 @@ jobs:
       - name: 🏷️ Apply labels
         uses: actions/labeler@v5
         with:
+          repo-token: "${{ secrets.token }}"
           sync-labels: true
 
 ...
