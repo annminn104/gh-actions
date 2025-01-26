@@ -19,6 +19,9 @@ on:  # yamllint disable-line rule:truthy
       token:
         description: The GitHub token to use when applying labels
         required: true
+permissions:
+  contents: read
+  pull-requests: write
 
 name: 🏷️ Add labels
 
