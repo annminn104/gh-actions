@@ -64,7 +64,7 @@ jobs:
         uses: changesets/action@v1
         with:
           commit: 'chore: update versions'
-          title: 'chore: updaet versions'
+          title: 'chore: update versions'
           cwd: ${{ github.workspace }}
           publish: pnpm run cs:publish
           version: pnpm run cs:version
