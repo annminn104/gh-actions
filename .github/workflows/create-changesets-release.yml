@@ -48,6 +48,10 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
 
       - name: 📥 Monorepo install
+        uses: annminn104/gh-actions/actions/pnpm/install/action.yml@master
+        with:
+          enable-corepack: false
+          cache-node-modules: true
 
       - name: 🦋 Create release pull request or publish to npm
         id: changesets
