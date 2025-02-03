@@ -46,7 +46,6 @@ jobs:
         with:
           node-version: ${{ inputs.node }}
           registry-url: "https://registry.npmjs.org/"
-          scope: "@annminn"
 
       - name: 🔑 Setup NPM authentication
         run: |
