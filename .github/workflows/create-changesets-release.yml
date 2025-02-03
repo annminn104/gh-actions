@@ -45,6 +45,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node }}
+          cache: "pnpm"
           registry-url: "https://registry.npmjs.org/"
 
       - name: 🔑 Setup NPM authentication
@@ -53,7 +54,7 @@ jobs:
           npm whoami || echo "Not logged in to NPM"
 
       - name: 📥 Monorepo install
-        uses: annminn104/gh-actions/actions/pnpm/install@v0.0.2
+        uses: annminn104/gh-actions/actions/pnpm/install@master
         with:
           enable-corepack: false
           cache-node-modules: true
