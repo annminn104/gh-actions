@@ -64,19 +64,7 @@ jobs:
           version: pnpm run cs:version
           setupGitUser: true
         env:
-          GITHUB_TOKEN: ${{ secrets.token }}
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-          NPM_TOKEN: ${{ secrets.npm_token }}
-          NPM_CONFIG_PROVENANCE: true
-
-      - name: Push changes to changeset-release branch
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git remote set-url origin https://x-access-token:${{ secrets.token }}@github.com/${{ github.repository }}.git
-          git push origin HEAD:changeset-release/master --force
-
-        env:
           HOME: ${{ github.workspace }}
           GITHUB_TOKEN: ${{ secrets.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
