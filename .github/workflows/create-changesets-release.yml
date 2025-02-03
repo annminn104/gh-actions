@@ -1,11 +1,10 @@
 ---
-
 permissions:
   id-token: write
   contents: write
 
 name: Create release or publish to pnpm reusable workflow
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   workflow_call:
     inputs:
       os:
@@ -17,7 +16,7 @@ on:  # yamllint disable-line rule:truthy
         description: The node version to use when creating the release
         required: false
         type: string
-        default: '18'
+        default: "18"
       repository:
         description: The repository to use when creating the release
         required: true
@@ -32,10 +31,13 @@ jobs:
   release:
     if: ${{ github.repository == inputs.repository && contains('refs/heads/master', github.ref)}}
     runs-on: ${{ inputs.os }}
-
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
     steps:
       - name: 📦 Check out the codebase
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -43,28 +45,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node }}
-          registry-url: 'https://registry.npmjs.org/'
+          registry-url: "https://registry.npmjs.org/"
 
       - name: 📥 Monorepo install
-        uses: annminn104/gh-actions/actions/pnpm/install@master
-        with:
-          enable-corepack: false
-          cache-node-modules: true
-
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-          //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.npm_token }}
+        run: pnpm install --frozen-lockfile
 
       - name: 🦋 Create release pull request or publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          commit: 'chore: update versions'
-          title: 'chore: update versions'
+          commit: "chore: update versions"
+          title: "chore: update versions"
           cwd: ${{ github.workspace }}
           publish: pnpm run cs:publish
           version: pnpm run cs:version
@@ -86,5 +77,3 @@ jobs:
           HOME: ${{ github.workspace }}
           GITHUB_TOKEN: ${{ secrets.token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
-
-...
