@@ -48,7 +48,7 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
 
       - name: 📥 Monorepo install
-        uses: annminn104/gh-actions/actions/pnpm/install/action.yml@master
+        uses: annminn104/gh-actions/actions/pnpm/install/action.yml@v
         with:
           enable-corepack: false
           cache-node-modules: true
