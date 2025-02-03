@@ -73,5 +73,6 @@ jobs:
           HOME: ${{ github.workspace }}
           GITHUB_TOKEN: ${{ secrets.token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          NPM_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
           PNPM_REGISTRY_URL: "https://registry.npmjs.org/"
