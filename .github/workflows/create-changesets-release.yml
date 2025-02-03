@@ -51,7 +51,7 @@ jobs:
         run: |
           npm whoami || echo "Not logged in to NPM"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+          NPM_AUTH_TOKEN: ${{ secrets.npm_token }}
 
       - name: 📥 Monorepo install
         uses: annminn104/gh-actions/actions/pnpm/install@v0.0.2
