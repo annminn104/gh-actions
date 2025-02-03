@@ -46,6 +46,12 @@ jobs:
         with:
           node-version: ${{ inputs.node }}
           registry-url: "https://registry.npmjs.org/"
+          scope: "@annminn"
+
+      - name: 🔑 Setup NPM authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" > .npmrc
+          npm whoami || echo "Not logged in to NPM"
 
       - name: 📥 Monorepo install
         uses: annminn104/gh-actions/actions/pnpm/install@v0.0.2
@@ -68,3 +74,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.token }}
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
+          PNPM_REGISTRY_URL: "https://registry.npmjs.org/"
