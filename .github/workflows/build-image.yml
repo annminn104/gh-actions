@@ -1,6 +1,5 @@
 ---
-
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   workflow_call:
     inputs:
       os:
@@ -14,19 +13,19 @@ on:  # yamllint disable-line rule:truthy
         type: boolean
         default: false
       image-namespace:
-        description: 'The namespace of the image, example: wayofdev/php-base'
+        description: "The namespace of the image, example: annminn104/code-base"
         required: true
         type: string
       image-template-path:
-        description: 'The path to the template of the image, example: ./dist/base'
+        description: "The path to the template of the image, example: ./dist/*"
         required: true
         type: string
       image-template:
-        description: 'The template of the image, example: 8.2-fpm-alpine'
+        description: "The template of the image, example: node:20-alpine"
         required: true
         type: string
       image-version:
-        description: 'The version of the image, example: latest'
+        description: "The version of the image, example: latest"
         required: true
         type: string
       image-platform:
@@ -93,7 +92,7 @@ jobs:
       - name: 🚀 Build image and push to docker-hub for "${{ inputs.image-platform }}"
         uses: docker/build-push-action@v6
         with:
-          context: '${{ inputs.image-template-path }}/${{ inputs.image-template }}'
+          context: "${{ inputs.image-template-path }}/${{ inputs.image-template }}"
           platforms: ${{ inputs.image-platform }}
           push: ${{ inputs.push-to-hub == true }}
           tags: ${{ steps.meta.outputs.tags }}
@@ -107,5 +106,3 @@ jobs:
           export IMAGE_TEMPLATE=${{ inputs.image-template }}
           export IMAGE_TAG=${{ inputs.image-namespace }}:${{ inputs.image-template }}-${{ inputs.image-version }}
           make test
-
-...

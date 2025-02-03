@@ -48,7 +48,6 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
 
       - name: 📥 Monorepo install
-        run: pnpm install --frozen-lockfile
 
       - name: 🦋 Create release pull request or publish to npm
         id: changesets
