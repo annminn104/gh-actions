@@ -47,11 +47,6 @@ jobs:
           node-version: ${{ inputs.node }}
           registry-url: "https://registry.npmjs.org/"
 
-      - name: 🔑 Setup NPM authentication
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" > ~/.npmrc
-          npm whoami || echo "Not logged in to NPM"
-
       - name: 📥 Monorepo install
         uses: annminn104/gh-actions/actions/pnpm/install@master
         with:
