@@ -45,12 +45,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node }}
-          registry-url: "https://registry.npmjs.org/"
-
-      - name: 🔑 Setup NPM authentication
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" > ~/.npmrc
-          npm whoami || echo "Not logged in to NPM"
 
       - name: 📥 Monorepo install
         uses: annminn104/gh-actions/actions/pnpm/install@master
@@ -74,4 +68,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
-          PNPM_REGISTRY_URL: "https://registry.npmjs.org/"
