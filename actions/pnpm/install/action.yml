@@ -75,10 +75,6 @@ runs:
         restore-keys: |
           pnpm-nm-cache-${{ inputs.cache-prefix }}-${{ runner.os }}-${{ steps.pnpm-config.outputs.CURRENT_NODE_VERSION }}-${{ steps.pnpm-config.outputs.CURRENT_BRANCH }}-
 
-    - name: 🧹 Clean up pnpm store
-      shell: bash
-      run: pnpm store prune
-
     - name: 📦 Install dependencies
       shell: bash
       run: pnpm install --no-frozen-lockfile --strict-peer-dependencies --prefer-offline
