@@ -31,7 +31,7 @@ runs:
       working-directory: ${{ inputs.cwd }}
       run: |
         corepack enable
-        corepack prepare pnpm@latest --activate
+        corepack prepare pnpm@9.15.2 --activate
         pnpm --version
 
     - name: ⚙️ Install pnpm
