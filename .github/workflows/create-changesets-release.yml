@@ -45,6 +45,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node }}
+          registry-url: "https://registry.npmjs.org/"
 
       - name: 📥 Monorepo install
         uses: annminn104/gh-actions/actions/pnpm/install@master
@@ -65,6 +66,4 @@ jobs:
         env:
           HOME: ${{ github.workspace }}
           GITHUB_TOKEN: ${{ secrets.token }}
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-          NPM_AUTH_TOKEN: ${{ secrets.npm_token }}
           NPM_TOKEN: ${{ secrets.npm_token }}
